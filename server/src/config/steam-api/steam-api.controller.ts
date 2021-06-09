@@ -6,7 +6,7 @@ import { User } from '../../user/user'
 export class SteamApiController {
     constructor(private readonly steamApiService: SteamApiService) {}
 
-    @Get()
+    @Get(':id')
     async find(@Param('id') id: string): Promise<User> {
         return this.steamApiService.findUser(id);
     }
