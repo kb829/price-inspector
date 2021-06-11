@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { HttpModule, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
@@ -13,7 +13,11 @@ import { RedisCacheModule } from './config/cache/cache.module';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client/public/'),
     }),
-    ConfigModule.forRoot(), UserModule, SteamApiModule, RedisCacheModule,
+    ConfigModule.forRoot(),
+    UserModule,
+    SteamApiModule,
+    RedisCacheModule,
+    HttpModule,
   ],
   controllers: [AppController],
   providers: [AppService],
