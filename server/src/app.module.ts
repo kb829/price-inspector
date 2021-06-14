@@ -11,7 +11,7 @@ import { RedisCacheModule } from './config/cache/cache.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../..', 'client/public/'),
+      rootPath: join(__dirname, '../..', 'client/dist/'),
     }),
     ConfigModule.forRoot(),
     UserModule,
