@@ -1,35 +1,21 @@
 <template>
   <v-app>
-    <v-navigation-drawer app>
-      <!-- -->
-    </v-navigation-drawer>
-
-    <v-app-bar app>
-      <!-- -->
-    </v-app-bar>
-
     <v-main>
-      <HelloWorld/>
+      <router-view/>
     </v-main>
-
-    <v-footer app>
-      <!-- -->
-    </v-footer>
   </v-app>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'App',
 
-  components: {
-    HelloWorld,
+  data () {
+    return {
+      //
+    }
   },
-
-  data: () => ({
-    //
-  }),
-}
+})
 </script>
