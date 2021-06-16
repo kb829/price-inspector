@@ -1,9 +1,7 @@
 <template>
   <v-app id="inspire">
-      <navigation>
-      </navigation>
-      <v-app-bar app>
-      </v-app-bar>
+      <navigation :drawer="drawer"/>
+      <appbar @drawNav="drawer = !drawer"/>
 
       <v-main>
 
@@ -19,10 +17,9 @@
 
 <script>
 export default {
-  name: 'App',
   data() {
     return {
-
+        drawer: null
     }
   }
 }
