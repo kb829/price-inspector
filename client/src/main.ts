@@ -5,9 +5,13 @@ import router from './router'
 
 import { setupComponents } from './config/setup-components';
 
-setupComponents(App);
+const app = createApp(App);
 
-createApp(App)
-  .use(router)
-  .use(vuetify)
-  .mount('#app')
+setupComponents(app);
+
+app.use(router).use(vuetify).mount('#app');
+
+// createApp(App)
+//   .use(router)
+//   .use(vuetify)
+//   .mount('#app')
