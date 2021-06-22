@@ -1,5 +1,5 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { User } from '../../user/user'
+import { User } from '../../user/dto/user'
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { response } from 'express';
 

@@ -1,7 +1,8 @@
 import { Controller, Body, Delete, Get, Post, Put, Param, HttpService } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SteamApiService } from './steam-api.service'
-import { User } from '../../user/user'
+import { User } from '../../user/dto/user'
+import { Wishlist } from '../../user/dto/wishlist'
 
 @Controller('steam-api')
 export class SteamApiController {
