@@ -8847,9 +8847,9 @@ vue@^3.0.0:
     "@vue/shared" "3.0.11"
 
 vuetify@^3.0.0-alpha.0:
-  version "3.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.0.0-alpha.5.tgz#83d3037bdafb521469eab834927acb57d9d7f05d"
-  integrity sha512-CEQRlWyEdfqrsIn/KiBGUjfMHb8lW04iuc7ORlMWHXa5Kpcn4TshjjHGakTLEigkwTH41FgX5LnaNfBWW9U7EQ==
+  version "3.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.0.0-alpha.6.tgz#26c7eecd8e1648767fd8284e2d3944e1df41294c"
+  integrity sha512-6JkWZiCS7CdTM2dWc43vgWFvTH4FdJG5cyrjv8NqG+46NmGHvyeWH3DYhne6hQM6rk4vtlN1IdYqVr5ZHFxBng==
 
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"
