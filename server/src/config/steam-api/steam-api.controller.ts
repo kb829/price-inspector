@@ -1,4 +1,4 @@
-import { Controller, Body, Delete, Get, Post, Put, Param, HttpService } from '@nestjs/common';
+import { Controller, Body, Delete, Get, Post, Put, Param, HttpService, ValidationPipe, UsePipes } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SteamApiService } from './steam-api.service'
 import { User } from '../../user/dto/user'
@@ -14,6 +14,7 @@ export class SteamApiController {
 
         private readonly STEAM_API_KEY = this.configService.get<string>('STEAM_API_KEY');
 
+    @UsePipes(new ValidationPipe())
     @Get('/ID/:id')
     async findID(@Param('id') id: string): Promise<User> {
         let res = await this.steamApiService.getPlayer(id);
@@ -29,4 +30,10 @@ export class SteamApiController {
 
         return response.data;
     }
+
+    // @UsePipes(new ValidationPipe())
+    // @Post('')
+    // async someAPI(@Body() dto:Dto): Promise<any> {
+
+    // }
 }

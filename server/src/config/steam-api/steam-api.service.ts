@@ -1,8 +1,9 @@
 import { HttpService, Injectable, HttpStatus, HttpException } from '@nestjs/common';
-import { User } from '../../user/dto/user'
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { response } from 'express';
 import { validate } from 'class-validator'
+import { FindUserDto } from '../../user/dto/find-user.dto'
+import { User } from '../../user/dto/user'
 
 @Injectable()
 export class SteamApiService {
