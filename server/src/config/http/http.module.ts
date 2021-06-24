@@ -20,7 +20,6 @@ export class HttpModule implements OnModuleInit {
         // Add request interceptor and response interceptor to log request infos
         const axios = this.httpService.axiosRef;
         axios.interceptors.request.use(function (config) {
-            // Please don't tell my Typescript compiler...
             config['metadata'] = { ...config['metadata'], startDate: new Date() };
             return config;
         });
@@ -30,7 +29,7 @@ export class HttpModule implements OnModuleInit {
                 config['metadata'] = { ...config['metadata'], endDate: new Date() };
                 const duration = config['metadata'].endDate.getTime() - config['metadata'].startDate.getTime();
 
-                // Log some request infos (you can actually extract a lot more if you want: the content type, the content size, etc.)
+                // Log some request infos
                 logger.log(`${config.method.toUpperCase()} ${config.url} ${duration}ms`);
 
                 return response;
@@ -38,7 +37,6 @@ export class HttpModule implements OnModuleInit {
             (err) => {
                 logger.error(err);
 
-                // Don't forget this line like I did at first: it makes your failed HTTP requests resolve with "undefined" :-(
                 return Promise.reject(err);
             });
     }

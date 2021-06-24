@@ -15,11 +15,11 @@ export class SteamApiController {
         private readonly STEAM_API_KEY = this.configService.get<string>('STEAM_API_KEY');
 
     @Get('/ID/:id')
-    async findID(@Param('id') id: string): Promise<any> {
-        let url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key='+ this.STEAM_API_KEY +'&steamids='+id;
-        const response = await this.httpService.get(url).toPromise();
-
-        return response.data;
+    async findID(@Param('id') id: string): Promise<User> {
+        let res = await this.steamApiService.getPlayer(id);
+        // let url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key='+ this.STEAM_API_KEY +'&steamids='+id;
+        // const response = await this.httpService.get(url).toPromise();
+        return res;
     }
 
     @Get('/WL/:id')
