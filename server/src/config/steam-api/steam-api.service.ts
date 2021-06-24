@@ -1,7 +1,8 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { HttpService, Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { User } from '../../user/dto/user'
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { response } from 'express';
+import { validate } from 'class-validator'
 
 @Injectable()
 export class SteamApiService {
@@ -18,15 +19,24 @@ export class SteamApiService {
 
         let user = new User();
 
-        if(response.data.response.player.length===0){
+        if(response.data.response.players.length===0){
             // throw new Error('No user id found');
             return user;
         }
         else{
-            user.userID = 
+            user.userID = response.data.response.players[0].steamid;
+            user.personaName = response.data.response.players[0].personaname;
+            user.avatar = response.data.response.players[0].avatar;
+            user.visibleState = response.data.response.players[0].communityvisibilitystate;
+            
+            const errors = await validate(user);
+
+            if(errors.length > 0) {
+                const _errors = {userID: 'User is not valid.'};
+                throw new HttpException({message: 'Input data validation failed', _errors}, HttpStatus.BAD_REQUEST);
+            }
+
             return user;
         }
-
-        return response.data;
     }
 }
