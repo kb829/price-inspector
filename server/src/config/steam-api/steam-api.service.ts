@@ -21,7 +21,8 @@ export class SteamApiService {
 
         if(response.data.response.players.length===0){
             // throw new Error('No user id found');
-            return user;
+            const _errors = {userID: 'User is not valid.'};
+            throw new HttpException({message: 'Input data validation failed', _errors}, HttpStatus.BAD_REQUEST);
         }
         else{
             user.userID = response.data.response.players[0].steamid;
