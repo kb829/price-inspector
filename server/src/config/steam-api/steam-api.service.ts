@@ -9,8 +9,11 @@ export class SteamApiService {
 
     private readonly STEAM_API_KEY = this.configService.get<string>('STEAM_API_KEY');
 
-    findUser(userID: string) {
+    async getPlayer(userID: string) {
+        let url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key='+ this.STEAM_API_KEY +'&steamids='+userID;
+        const response = await this.httpService.get(url).toPromise();
 
+        return response.data;
         // need api call
         // if(){
         //     return 
