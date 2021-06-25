@@ -8,11 +8,11 @@ import { Wishlist } from '../../user/dto/wishlist'
 export class SteamApiController {
     constructor(
         private readonly steamApiService: SteamApiService,
-        private httpService: HttpService, 
-        private configService: ConfigService,
+        // private httpService: HttpService, 
+        // private configService: ConfigService,
         ) {}
 
-        private readonly STEAM_API_KEY = this.configService.get<string>('STEAM_API_KEY');
+        // private readonly STEAM_API_KEY = this.configService.get<string>('STEAM_API_KEY');
 
     @UsePipes(new ValidationPipe())
     @Get('/ID/:id')
@@ -24,11 +24,11 @@ export class SteamApiController {
     }
 
     @Get('/WL/:id')
-    async findWL(@Param('id') id: string): Promise<any> {
-        let url = 'https://store.steampowered.com/wishlist/profiles/'+id+'/wishlistdata/';
-        const response = await this.httpService.get(url).toPromise();
-
-        return response.data;
+    async findWL(@Param('id') id: string): Promise<Wishlist> {
+        let res = await this.steamApiService.getWishlist(id);
+        // let url = 'https://store.steampowered.com/wishlist/profiles/'+id+'/wishlistdata/';
+        // const response = await this.httpService.get(url).toPromise();
+        return res;
     }
 
     // @UsePipes(new ValidationPipe())

@@ -4,6 +4,7 @@ import { response } from 'express';
 import { validate } from 'class-validator'
 import { FindUserDto } from '../../user/dto/find-user.dto'
 import { User } from '../../user/dto/user'
+import { Wishlist } from 'src/user/dto/wishlist';
 
 @Injectable()
 export class SteamApiService {
@@ -22,7 +23,7 @@ export class SteamApiService {
 
         if(response.data.response.players.length===0){
             // throw new Error('No user id found');
-            const _errors = {userID: 'User is not valid.'};
+            const _errors = {userID: 'User ID is not valid.'};
             throw new HttpException({message: 'Input data validation failed', _errors}, HttpStatus.BAD_REQUEST);
         }
         else{
@@ -40,5 +41,16 @@ export class SteamApiService {
 
             return user;
         }
+    }
+
+    async getWishlist(userID: string): Promise<Wishlist>{
+        let url = 'https://store.steampowered.com/wishlist/profiles/' + userID + '/wishlistdata/';
+        const response = await this.httpService.get(url).toPromise();
+
+        let wishlist = new Wishlist();
+
+
+
+        return response.data;
     }
 }
