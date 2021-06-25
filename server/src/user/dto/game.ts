@@ -19,5 +19,9 @@ export class Game {
 
     @IsNotEmpty()
     @IsNumber()
+    discount_pct: number;
+
+    @IsNotEmpty()
+    @IsNumber()
     priority: number;
 }
