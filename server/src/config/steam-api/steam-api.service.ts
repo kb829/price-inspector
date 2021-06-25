@@ -60,11 +60,13 @@ export class SteamApiService {
 
                 if(response.data[key].subs.length===0) {
                     game.id = Number(key);
-                    game.price = -1; // In this case, could not find price of it
+                    game.price = -1;        // In this case, could not find price of it
+                    game.discount_pct = -1; // In this case, could not find discount percent of it
                 }
                 else{
                     game.id = response.data[key].subs[0].id;
                     game.price = (response.data[key].subs[0].price)/100;
+                    game.discount_pct = response.data[key].subs[0].discount_pct;
                 }
 
                 game.name = response.data[key].name;
