@@ -4,6 +4,8 @@ import { response } from 'express';
 import { validate } from 'class-validator'
 import { FindUserDto } from '../../user/dto/find-user.dto'
 import { User } from '../../user/dto/user'
+import { Wishlist } from 'src/user/dto/wishlist';
+import { Game } from 'src/user/dto/game';
 
 @Injectable()
 export class SteamApiService {
@@ -22,8 +24,8 @@ export class SteamApiService {
 
         if(response.data.response.players.length===0){
             // throw new Error('No user id found');
-            const _errors = {userID: 'User is not valid.'};
-            throw new HttpException({message: 'Input data validation failed', _errors}, HttpStatus.BAD_REQUEST);
+            const _errors = {userID: 'User ID is not valid.'};
+            throw new HttpException({message: 'User ID Invalid.', _errors}, HttpStatus.BAD_REQUEST);
         }
         else{
             user.userID = response.data.response.players[0].steamid;
@@ -39,6 +41,42 @@ export class SteamApiService {
             }
 
             return user;
+        }
+    }
+
+    async getWishlist(userID: string): Promise<Wishlist>{
+        let url = 'https://store.steampowered.com/wishlist/profiles/' + userID + '/wishlistdata/';
+        const response = await this.httpService.get(url).toPromise();
+
+        let wishlist = new Wishlist();
+
+        if(response.data.success===2){
+            const _errors = {userID: 'User ID is not valid.'};
+            throw new HttpException({message: 'User ID Invalid', _errors}, HttpStatus.BAD_REQUEST);
+        }
+        else{
+            for (let key in response.data) {
+                let game = new Game();
+
+                if(response.data[key].subs.length===0) {
+                    game.id = Number(key);
+                    game.price = -1;        // In this case, could not find price of it
+                    game.discount_pct = -1; // In this case, could not find discount percent of it
+                }
+                else{
+                    game.id = response.data[key].subs[0].id;
+                    game.price = (response.data[key].subs[0].price)/100;
+                    game.discount_pct = response.data[key].subs[0].discount_pct;
+                }
+
+                game.name = response.data[key].name;
+                game.icon = response.data[key].capsule;
+                game.priority = response.data[key].priority;
+                
+                wishlist.games.push(game);
+            }
+
+            return wishlist;
         }
     }
 }
