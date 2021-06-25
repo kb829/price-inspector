@@ -1,7 +1,8 @@
 # price-inspector
 > toy project
 
-back-end : nestjs
+front-end : vuejs3, vuetify3 alpha, typescript
+back-end : nestjs, typescript
 
 ## Development setup
 ```sh
