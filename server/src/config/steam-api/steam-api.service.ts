@@ -5,6 +5,7 @@ import { validate } from 'class-validator'
 import { FindUserDto } from '../../user/dto/find-user.dto'
 import { User } from '../../user/dto/user'
 import { Wishlist } from 'src/user/dto/wishlist';
+import { Game } from 'src/user/dto/game';
 
 @Injectable()
 export class SteamApiService {
@@ -24,7 +25,7 @@ export class SteamApiService {
         if(response.data.response.players.length===0){
             // throw new Error('No user id found');
             const _errors = {userID: 'User ID is not valid.'};
-            throw new HttpException({message: 'Input data validation failed', _errors}, HttpStatus.BAD_REQUEST);
+            throw new HttpException({message: 'User ID Invalid.', _errors}, HttpStatus.BAD_REQUEST);
         }
         else{
             user.userID = response.data.response.players[0].steamid;
@@ -49,7 +50,17 @@ export class SteamApiService {
 
         let wishlist = new Wishlist();
 
-
+        if(response.data.success===2){
+            const _errors = {userID: 'User ID is not valid.'};
+            throw new HttpException({message: 'User ID Invalid', _errors}, HttpStatus.BAD_REQUEST);
+        }
+        else{
+            for (let key in response.data) {
+                let game = new Game();
+                
+                wishlist.games.push(game);
+            }
+        }
 
         return response.data;
     }

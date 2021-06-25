@@ -1,7 +1,23 @@
+import { IsNotEmpty, IsNumberString, IsOptional, IsString, IsNumber } from 'class-validator';
+
 export class Game {
-    readonly id: number;
-    readonly name: string;
-    readonly icon: string;
-    readonly price: number;
-    readonly priority: number;
+    @IsNotEmpty()
+    @IsNumber()
+    id: number;
+
+    @IsNotEmpty()
+    @IsString()
+    name: string;
+
+    @IsNotEmpty()
+    @IsString()
+    icon: string;
+
+    @IsNotEmpty()
+    @IsNumber()
+    price: number;
+
+    @IsNotEmpty()
+    @IsNumber()
+    priority: number;
 }
