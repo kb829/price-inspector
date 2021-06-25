@@ -57,11 +57,24 @@ export class SteamApiService {
         else{
             for (let key in response.data) {
                 let game = new Game();
+
+                if(response.data[key].subs.length===0) {
+                    game.id = Number(key);
+                    game.price = -1; // In this case, could not find price of it
+                }
+                else{
+                    game.id = response.data[key].subs[0].id;
+                    game.price = (response.data[key].subs[0].price)/100;
+                }
+
+                game.name = response.data[key].name;
+                game.icon = response.data[key].capsule;
+                game.priority = response.data[key].priority;
                 
                 wishlist.games.push(game);
             }
-        }
 
-        return response.data;
+            return wishlist;
+        }
     }
 }
