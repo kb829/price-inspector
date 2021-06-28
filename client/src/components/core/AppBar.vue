@@ -18,19 +18,21 @@
     </v-app-bar>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent ({
     data() {
         return {
             
         }
     },
     methods: {
-        drawNav(){
+        drawNav() {
             this.$emit('drawNav');
         }
     },
-}
+})
 </script>
 
 <style>

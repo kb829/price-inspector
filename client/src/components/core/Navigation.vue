@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    v-model="drawer"
+    v-model="newDrawer"
     app
   >
     <v-sheet
@@ -37,21 +37,30 @@
   </v-navigation-drawer>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent ({
+    props:{
+        drawer: {
+            type: Boolean,
+            default: false
+        }
+    },
     data() {
         return {
             selectedItem: 0,
             items: [
                 { text: "Profile", },
                 { text: "Wishlist", },
-            ]
+            ],
+            newDrawer: this.drawer,
         }
     },
     methods: {
 
     },
-}
+})
 </script>
 
 <style>
