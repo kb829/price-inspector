@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
       <navigation :drawer="drawer"/>
-      <appbar @drawNav="drawer=!drawer"/>
+      <appbar @drawNav="drawerNav"/>
 
       <v-main>
 
@@ -23,14 +23,13 @@ export default defineComponent ({
 
   data() {
     return {
-        drawer: null,
+        drawer: false,
     }
   },
   methods: {
-    // drawNav(drawer: boolean){
-    //   console.log(drawer);
-    //   this.drawer = drawer;
-    // }
+    drawerNav(newDrawer: any) {
+      this.drawer = newDrawer;
+    }
   },
 })
 </script>

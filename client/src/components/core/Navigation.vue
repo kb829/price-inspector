@@ -42,23 +42,25 @@ import { defineComponent } from 'vue'
 
 export default defineComponent ({
     props:{
-        drawer: {
-            type: Boolean,
-            default: false
-        }
+        drawer: Boolean,
     },
     data() {
         return {
+            newDrawer: this.drawer,
             selectedItem: 0,
             items: [
                 { text: "Profile", },
                 { text: "Wishlist", },
             ],
-            newDrawer: this.drawer,
+        }
+    },
+    watch: {
+        drawer: function() {
+            this.newDrawer = this.drawer;
         }
     },
     methods: {
-
+        
     },
 })
 </script>
