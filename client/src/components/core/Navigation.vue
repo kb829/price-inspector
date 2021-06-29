@@ -27,7 +27,7 @@
                 <!-- <v-list-item-icon>
                 </v-list-item-icon> -->
                 <!-- <v-list-item-content> -->
-                    <v-list-item-title
+                    <v-list-item-title @click="chRoute('Profile',0)"
                         v-text="item.text"
                     ></v-list-item-title>
                 <!-- </v-list-item-content> -->
@@ -60,7 +60,10 @@ export default defineComponent ({
         }
     },
     methods: {
-        
+        chRoute(viewName: any, selectedItem: any){
+            this.selectedItem = selectedItem;
+            return this.$route.push({name: viewName});
+        }
     },
 })
 </script>
