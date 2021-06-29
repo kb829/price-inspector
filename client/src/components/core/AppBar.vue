@@ -1,6 +1,6 @@
 <template>
     <v-app-bar app>
-        <v-app-bar-nav-icon @click="drawNav"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="drawNav()"></v-app-bar-nav-icon>
         <v-app-bar-title>toolbar title</v-app-bar-title>
 
         <v-responsive max-width="300">
@@ -24,12 +24,13 @@ import { defineComponent } from 'vue'
 export default defineComponent ({
     data() {
         return {
-            
+            drawer: false,
         }
     },
     methods: {
         drawNav() {
-            this.$emit('drawNav');
+            this.drawer = !this.drawer;
+            this.$emit('drawNav', this.drawer);
         }
     },
 })

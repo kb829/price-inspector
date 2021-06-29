@@ -23,11 +23,12 @@
             <v-list-item
                 v-for="(item, i) in items"
                 :key="i"
+                link
             >
                 <!-- <v-list-item-icon>
                 </v-list-item-icon> -->
                 <!-- <v-list-item-content> -->
-                    <v-list-item-title
+                    <v-list-item-title @click="chRoute(item.link,i)"
                         v-text="item.text"
                     ></v-list-item-title>
                 <!-- </v-list-item-content> -->
@@ -42,23 +43,34 @@ import { defineComponent } from 'vue'
 
 export default defineComponent ({
     props:{
-        drawer: {
-            type: Boolean,
-            default: false
-        }
+        drawer: Boolean,
     },
     data() {
         return {
+            newDrawer: this.drawer,
             selectedItem: 0,
             items: [
-                { text: "Profile", },
-                { text: "Wishlist", },
+                {
+                    text: 'Profile',
+                    link: 'Profile',
+                },
+                {
+                    text: "Wishlist",
+                    link: "Wishlist",
+                },
             ],
-            newDrawer: this.drawer,
+        }
+    },
+    watch: {
+        drawer: function() {
+            this.newDrawer = this.drawer;
         }
     },
     methods: {
-
+        chRoute(viewName: string, selectedItem: number){
+            this.selectedItem = selectedItem;
+            return this.$router.push(viewName);
+        }
     },
 })
 </script>
