@@ -11,18 +11,30 @@ const router = createRouter({
         {
             path: '/',
             name: 'Home',
-            component: Home
+            component: Home,
+            children: [
+                {
+                    path: 'Profile',
+                    name: 'Profile',
+                    component: Profile
+                },
+                {
+                    path: 'Wishlist',
+                    name: 'Wishlist',
+                    component: Wishlist
+                },
+            ],
         },
-        {
-            path: '/profile',
-            name: 'Profile',
-            component: Profile
-        },
-        {
-            path: '/Wishlist',
-            name: 'Wishlist',
-            component: Wishlist
-        },
+        // {
+        //     path: '/Profile',
+        //     name: 'Profile',
+        //     component: Profile
+        // },
+        // {
+        //     path: '/Wishlist',
+        //     name: 'Wishlist',
+        //     component: Wishlist
+        // },
     ]
 })
 

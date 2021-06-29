@@ -28,7 +28,7 @@
                 <!-- <v-list-item-icon>
                 </v-list-item-icon> -->
                 <!-- <v-list-item-content> -->
-                    <v-list-item-title @click="chRoute()"
+                    <v-list-item-title @click="chRoute(item.link,i)"
                         v-text="item.text"
                     ></v-list-item-title>
                 <!-- </v-list-item-content> -->
@@ -50,12 +50,14 @@ export default defineComponent ({
             newDrawer: this.drawer,
             selectedItem: 0,
             items: [
-                { text: "Profile", },
-                { text: "Wishlist", },
-            ],
-            links: [
-                'Profile',
-                'Wishlist',
+                {
+                    text: 'Profile',
+                    link: 'Profile',
+                },
+                {
+                    text: "Wishlist",
+                    link: "Wishlist",
+                },
             ],
         }
     },
@@ -65,9 +67,9 @@ export default defineComponent ({
         }
     },
     methods: {
-        chRoute(selectedItem: any){
+        chRoute(viewName: string, selectedItem: number){
             this.selectedItem = selectedItem;
-            return this.$route.push({name: this.links[selectedItem]});
+            return this.$router.push(viewName);
         }
     },
 })
