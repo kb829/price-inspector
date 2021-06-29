@@ -23,11 +23,12 @@
             <v-list-item
                 v-for="(item, i) in items"
                 :key="i"
+                link
             >
                 <!-- <v-list-item-icon>
                 </v-list-item-icon> -->
                 <!-- <v-list-item-content> -->
-                    <v-list-item-title @click="chRoute('Profile',0)"
+                    <v-list-item-title @click="chRoute()"
                         v-text="item.text"
                     ></v-list-item-title>
                 <!-- </v-list-item-content> -->
@@ -52,6 +53,10 @@ export default defineComponent ({
                 { text: "Profile", },
                 { text: "Wishlist", },
             ],
+            links: [
+                'Profile',
+                'Wishlist',
+            ],
         }
     },
     watch: {
@@ -60,9 +65,9 @@ export default defineComponent ({
         }
     },
     methods: {
-        chRoute(viewName: any, selectedItem: any){
+        chRoute(selectedItem: any){
             this.selectedItem = selectedItem;
-            return this.$route.push({name: viewName});
+            return this.$route.push({name: this.links[selectedItem]});
         }
     },
 })
