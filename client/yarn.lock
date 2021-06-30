@@ -3507,6 +3507,11 @@ dotenv-expand@^5.1.0:
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
   integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
 
+dotenv@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-10.0.0.tgz#3d4227b8fb95f81096cdd2b66653fb2c7085ba81"
+  integrity sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==
+
 dotenv@^8.2.0:
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.6.0.tgz#061af664d19f7f4d8fc6e4ff9b584ce237adcb8b"
@@ -8846,10 +8851,10 @@ vue@^3.0.0:
     "@vue/runtime-dom" "3.0.11"
     "@vue/shared" "3.0.11"
 
-vuetify@^3.0.0-alpha.0:
-  version "3.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.0.0-alpha.6.tgz#26c7eecd8e1648767fd8284e2d3944e1df41294c"
-  integrity sha512-6JkWZiCS7CdTM2dWc43vgWFvTH4FdJG5cyrjv8NqG+46NmGHvyeWH3DYhne6hQM6rk4vtlN1IdYqVr5ZHFxBng==
+vuetify@^3.0.0-alpha.7:
+  version "3.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.0.0-alpha.7.tgz#636101ed7e8191debf2a733589350f21292b9f97"
+  integrity sha512-1bmDaWht1BHLl7nwCBe+h9ZMHgmKRE46d7o9tC0Zvz7EMnATRFiu2PiszlgXBZTBCPyWa+d9d60OwiOgCkwScw==
 
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"

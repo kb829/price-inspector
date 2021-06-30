@@ -11,6 +11,7 @@
                 rounded
                 solo-inverted
             ></v-text-field> -->
+            <input v-model="userID" placeholder="ID"/>
             <v-btn icon>
                 <v-icon>mdi-magnify</v-icon>
             </v-btn>
