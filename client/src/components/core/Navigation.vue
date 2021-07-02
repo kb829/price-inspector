@@ -59,6 +59,7 @@ export default defineComponent ({
                     link: "Wishlist",
                 },
             ],
+            userID: "",
         }
     },
     watch: {
@@ -71,15 +72,6 @@ export default defineComponent ({
             this.selectedItem = selectedItem;
             return this.$router.push(viewName);
         },
-        // getProfile: function() {
-        //     this.$axios.get(process.env.VUE_APP_PROFILE_API)
-        //     .then(function(response: any) {
-                
-        //     })
-        //     .catch(function(error: any) {
-
-        //     });
-        // }
     },
 })
 </script>
