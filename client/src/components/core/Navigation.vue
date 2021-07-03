@@ -5,9 +5,14 @@
   >
     <v-sheet
     >
-        <!-- <v-avater
+        <v-avatar
+            color="info"
+            size="100"
         >
-        </v-avater> -->
+            <v-icon>
+                mdi-account-circle
+            </v-icon>
+        </v-avatar>
         <div></div>
     </v-sheet>
     <v-divider></v-divider>
@@ -15,7 +20,7 @@
         nav
         dense
     >
-        <!-- <v-subheader> Menu </v-subheader> -->
+        <v-subheader> Menu </v-subheader>
         <!-- <v-list-item-group
             v-model="selectedItem"
             active-class="deep-blue--text"
@@ -25,8 +30,11 @@
                 :key="i"
                 link
             >
-                <!-- <v-list-item-icon>
-                </v-list-item-icon> -->
+                <v-list-item-icon>
+                    <v-icon>
+                        {{item.icon}}
+                    </v-icon>
+                </v-list-item-icon>
                 <!-- <v-list-item-content> -->
                     <v-list-item-title @click="chRoute(item.link,i)"
                         v-text="item.text"
@@ -53,10 +61,12 @@ export default defineComponent ({
                 {
                     text: 'Profile',
                     link: 'Profile',
+                    icon: 'mdi-account',
                 },
                 {
-                    text: "Wishlist",
-                    link: "Wishlist",
+                    text: 'Wishlist',
+                    link: 'Wishlist',
+                    icon: 'mdi-format-list-text',
                 },
             ],
             userID: "",
