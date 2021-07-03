@@ -24,6 +24,7 @@ export default defineComponent ({
   data() {
     return {
         drawer: false,
+        userID: "",
     }
   },
   methods: {
