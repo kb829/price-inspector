@@ -1,23 +1,27 @@
-import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
-import { Cache } from 'cache-manager';
+import { CACHE_MANAGER, Inject, Injectable, Logger } from '@nestjs/common';
+import { CacheService } from '../providers/cache/cache.service';
 
 @Injectable()
 export class UserService {
-    constructor(@Inject(CACHE_MANAGER) private readonly cache: Cache) {}
+    constructor(
+        private readonly cacheService: CacheService,
+    ) {}
+
+    private readonly logger = new Logger();
 
     async get(key): Promise<any> {
-        return await this.cache.get(key);
+        return await this.cacheService.get(key);
     }
 
     async set(key, value) {
-        await this.cache.set(key, value, 1000);
+        await this.cacheService.set(key, value);
     }
 
     async reset() {
-        await this.cache.reset();
+        await this.cacheService.reset();
     }
 
     async del(key) {
-        await this.cache.del(key);
+        await this.cacheService.del(key);
     }
 }

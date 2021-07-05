@@ -6,7 +6,7 @@ import { UserModule } from './user/user.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { SteamApiModule } from './config/steam-api/steam-api.module';
-import { RedisCacheModule } from './config/cache/cache.module';
+import { RedisCacheModule } from './providers/cache/cache.module';
 
 @Module({
   imports: [
