@@ -1,8 +1,6 @@
 import { HttpService, Injectable, HttpStatus, HttpException } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { response } from 'express';
+import { ConfigService } from '@nestjs/config';
 import { validate } from 'class-validator'
-import { FindUserDto } from '../../user/dto/find-user.dto'
 import { User } from '../../user/dto/user'
 import { Wishlist } from 'src/user/dto/wishlist';
 import { Game } from 'src/user/dto/game';
@@ -15,6 +13,7 @@ export class SteamApiService {
     ) {}
 
     private readonly STEAM_API_KEY = this.configService.get<string>('STEAM_API_KEY');
+    // this.configService.get<string>('STEAM_API_KEY');
 
     async getPlayer(userID: string): Promise<User> {
         let url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + this.STEAM_API_KEY + '&steamids=' + userID;

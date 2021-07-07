@@ -9,7 +9,7 @@ import { ConfigService } from '@nestjs/config';
 export class SteamAPIConfigService {
   constructor(private configService: ConfigService) {}
   
-  get env(): string {
+  get apiKey(): string {
     return this.configService.get<string>('STEAM_API_KEY');
   }
 }
