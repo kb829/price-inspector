@@ -9,7 +9,8 @@ export class UserController {
     ) {}
 
     @Get(':id')
-    async getUserById(@Param('id') id: string): Promise<any> {
-        // to do - get user id from steam api
+    async getUserById(@Param('id') id: string): Promise<User> {
+        let res = await this.userService.getProfile(id);
+        return res;
     }
 }
