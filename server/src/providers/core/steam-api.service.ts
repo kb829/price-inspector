@@ -2,8 +2,8 @@ import { HttpService, Injectable, HttpStatus, HttpException } from '@nestjs/comm
 import { validate } from 'class-validator';
 import { SteamAPIConfigService } from 'src/config/steam-api/config.service';
 import { User } from '../../user/dto/user';
-import { Wishlist } from 'src/user/dto/wishlist';
-import { Game } from 'src/user/dto/game';
+import { Wishlist } from '../../wishlist/dto/wishlist';
+import { Game } from '../../wishlist/dto/game';
 
 @Injectable()
 export class SteamApiService {
