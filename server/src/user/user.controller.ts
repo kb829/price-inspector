@@ -9,6 +9,7 @@ export class UserController {
     ) {}
 
     @Get(':id')
+    @UsePipes(new ValidationPipe({ transform: true }))
     async getUserById(@Param('id') id: string): Promise<User> {
         let res = await this.userService.getProfile(id);
         return res;
