@@ -9,6 +9,7 @@ export class WishlistController {
     ) {}
 
     @Get(':id')
+    @UsePipes(new ValidationPipe({ transform: true }))
     async getWishlistById(@Param('id') id: string): Promise<Wishlist> {
         let res = await this.wishlistService.getWishlist(id);
         return res;
