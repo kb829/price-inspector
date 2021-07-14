@@ -12,7 +12,7 @@
                 solo-inverted
             ></v-text-field> -->
             <input v-model="userID" placeholder="ID"/>
-            <v-btn icon>
+            <v-btn icon @click="searchUser()">
                 <v-icon>mdi-magnify</v-icon>
             </v-btn>
         </v-responsive>
@@ -20,18 +20,29 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
+import SteamAPIService from '../../services/steam/SteamAPIService';
 
 export default defineComponent ({
     data() {
         return {
             drawer: false,
+            userID: String,
         }
     },
     methods: {
         drawNav() {
             this.drawer = !this.drawer;
             this.$emit('drawNav', this.drawer);
+        },
+        searchUser() {
+            SteamAPIService.getProfile(this.userID)
+            .then((res: any) => {
+                console.log(res.data);
+            })
+            .catch((e: Error) => {
+                console.log(e);
+            })
         }
     },
 })
