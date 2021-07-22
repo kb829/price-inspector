@@ -36,6 +36,7 @@ export default defineComponent ({
             this.$emit('drawNav', this.drawer);
         },
         searchUser() {
+            this.$emit('username', this.userID);
             SteamAPIService.getProfile(this.userID)
             .then((res: any) => {
                 console.log(res.data);
