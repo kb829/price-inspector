@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
       <navigation :drawer="drawer"/>
-      <appbar @drawNav="drawerNav"/>
+      <appbar @drawNav="drawerNav" @searchUser="searchUser"/>
 
       <v-main>
 
@@ -30,6 +30,9 @@ export default defineComponent ({
   methods: {
     drawerNav(newDrawer: any) {
       this.drawer = newDrawer;
+    },
+    searchUser(newUserid: any) {
+      this.userID = newUserid;
     }
   },
 })
